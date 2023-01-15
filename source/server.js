@@ -107,7 +107,7 @@ if (config.autoShutdownTimeout) {
       logger.info(
         `Shutting down ungit due to inactivity. (autoShutdownTimeout is set to ${config.autoShutdownTimeout} ms`
       );
-      process.exit(0);
+      process.exit();
     }, config.autoShutdownTimeout);
   };
   app.use((req, res, next) => {
@@ -181,13 +181,13 @@ if (config.authentication) {
 
 const indexHtmlCacheKey = cache.registerFunc(() => {
   return cache.resolveFunc(pluginsCacheKey).then((plugins) => {
-    return fs.readFile(__dirname + '/../public/index.html').then((data) => {
+    return fs.readFile(__dirname + '/../public/index.html', { encoding: 'utf8' }).then((data) => {
       return Promise.all(
         Object.values(plugins).map((plugin) => {
           return plugin.compile();
         })
       ).then((results) => {
-        data = data.toString().replace('<!-- ungit-plugins-placeholder -->', results.join('\n\n'));
+        data = data.replace('<!-- ungit-plugins-placeholder -->', results.join('\n\n'));
         data = data.replace(/__ROOT_PATH__/g, config.rootPath);
 
         return data;
@@ -342,11 +342,11 @@ const readUserConfig = () => {
       return fs
         .readFile(userConfigPath, { encoding: 'utf8' })
         .then((content) => {
-          return JSON.parse(content.toString());
+          return JSON.parse(content);
         })
         .catch((err) => {
           logger.error(`Stop at reading ~/.ungitrc because ${err}`);
-          process.exit(0);
+          process.exit(1);
         });
     })
     .catch(() => {

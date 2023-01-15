@@ -330,7 +330,7 @@ const argvConfig = argv.argv;
 // When ungit is started normally, $0 == ungit, and non-hyphenated options exists, show help and exit.
 if (argvConfig.$0.endsWith('ungit') && argvConfig._ && argvConfig._.length > 0) {
   yargs.showHelp();
-  process.exit(0);
+  process.exit(1);
 }
 
 let rcConfig = {};
@@ -342,7 +342,7 @@ if (!argvConfig.cliconfigonly) {
     delete rcConfig['configs'];
   } catch (err) {
     console.error(`Stop at reading ~/.ungitrc because ${err}`);
-    process.exit(0);
+    process.exit(1);
   }
 }
 
@@ -392,16 +392,16 @@ try {
 
 module.exports.ungitPackageVersion = require('../package.json').version;
 
+let devVersion = module.exports.ungitPackageVersion;
 if (fs.existsSync(path.join(__dirname, '..', '.git'))) {
   const revision = child_process
     .execSync('git rev-parse --short HEAD', { cwd: path.join(__dirname, '..') })
     .toString()
     .replace('\n', ' ')
     .trim();
-  module.exports.ungitDevVersion = `dev-${module.exports.ungitPackageVersion}-${revision}`;
-} else {
-  module.exports.ungitDevVersion = module.exports.ungitPackageVersion;
+  devVersion = `dev-${module.exports.ungitPackageVersion}-${revision}`;
 }
+module.exports.ungitDevVersion = devVersion;
 
 if (module.exports.alwaysLoadActiveBranch) {
   module.exports.maxActiveBranchSearchIteration = 25;
