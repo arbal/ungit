@@ -3,8 +3,8 @@ const environment = require('./environment')({
   serverStartupOptions: ['--no-disableDiscardWarning'],
   rootPath: '/deep/root/path/to/app',
 });
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
+const mkdirp = require('mkdirp').mkdirp;
+const rimraf = require('rimraf').rimraf;
 const testRepoPaths = [];
 
 const changeTestFile = async (filename, repoPath) => {
@@ -18,7 +18,7 @@ const amendCommit = async () => {
   try {
     await environment.page.waitForSelector('.amend-button', { visible: true, timeout: 2000 });
     await environment.click('.amend-button');
-  } catch (err) {
+  } catch {
     await environment.click('.amend-link');
   }
   await environment.ensureRedraw();
@@ -37,6 +37,7 @@ describe('[GENERIC]', () => {
     await rimraf(testRepoPaths[1]);
     await mkdirp(testRepoPaths[1]);
   });
+
   after('Environment stop', () => environment.shutdown());
 
   it('Open repo screen', () => {
@@ -155,7 +156,6 @@ describe('[GENERIC]', () => {
     await environment.waitForElementHidden('.files .file .btn-default');
   });
 
-  // eslint-disable-next-line mocha/no-skipped-tests
   it.skip('Should be possible to patch a file', async () => {
     await changeTestFile(`${testRepoPaths[0]}/testfile.txt`, testRepoPaths[0]);
     //   .patch('patch')

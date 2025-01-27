@@ -3,7 +3,44 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 We are following the [Keep a Changelog](https://keepachangelog.com/) format.
 
-## [Unreleased](https://github.com/FredrikNoren/ungit/compare/v1.5.23...master)
+## [Unreleased](https://github.com/FredrikNoren/ungit/compare/v1.5.28...master)
+
+## [1.5.28](https://github.com/FredrikNoren/ungit/compare/v1.5.27...v1.5.28)
+
+### Fixes
+- Enable git fetch again [#1604](https://github.com/FredrikNoren/ungit/pull/1604)
+
+### Changed
+- Bump Dependencies https://github.com/FredrikNoren/ungit/commit/dd9b7a35c92fafc3883a2ad7d04814049e04406a, https://github.com/FredrikNoren/ungit/commit/7e4e830cb71bdcbdd92d903419e1ad5e23a5ddc2, https://github.com/FredrikNoren/ungit/commit/944835dc8627c767c7145dad94b9fb4a2028e685, https://github.com/FredrikNoren/ungit/commit/ea063f47acf1f733b2a0af80d9c94293c3d880b7
+- CI Fixes https://github.com/FredrikNoren/ungit/commit/c02db509c2c334e7541e8f3dea4f615c7a614ccb, https://github.com/FredrikNoren/ungit/commit/a32668649836d7fd382574615333807ef3eed370, https://github.com/FredrikNoren/ungit/commit/7349b941a58f95117801fa36029fd44769dee8f8, 
+- Replace node 21 with 22 https://github.com/FredrikNoren/ungit/commit/571d03f5fd9f4dca073152b123f117b5fb9bde8b
+
+## [1.5.27](https://github.com/FredrikNoren/ungit/compare/v1.5.26...v1.5.27)
+
+### Added
+- Show parent commit ids and try to select them on click [#1581](https://github.com/FredrikNoren/ungit/issues/1581)
+
+### Changed
+- Use monospace font-family in commit body [#1598](https://github.com/FredrikNoren/ungit/pull/1598)
+- Change watcher to properly filter ignored directories [#1597](https://github.com/FredrikNoren/ungit/pull/1597)
+
+## [1.5.26](https://github.com/FredrikNoren/ungit/compare/v1.5.25...v1.5.26)
+
+### Changed
+- Bump Dependencies [#1584](https://github.com/FredrikNoren/ungit/pull/1584), [#1585](https://github.com/FredrikNoren/ungit/pull/1585), [#1587](https://github.com/FredrikNoren/ungit/pull/1587), [#1586](https://github.com/FredrikNoren/ungit/pull/1586)
+
+## [1.5.25](https://github.com/FredrikNoren/ungit/compare/v1.5.24...v1.5.25)
+
+### Changed
+- Bump Dependencies [#1566](https://github.com/FredrikNoren/ungit/pull/1566), [#1571](https://github.com/FredrikNoren/ungit/pull/1571), [#1574](https://github.com/FredrikNoren/ungit/pull/1574), [#1578](https://github.com/FredrikNoren/ungit/pull/1578)
+
+## [1.5.24](https://github.com/FredrikNoren/ungit/compare/v1.5.23...v1.5.24)
+
+### Fixes
+- Fallback for font if bundled font dont support glyphs [#1564](https://github.com/FredrikNoren/ungit/pull/1564)
+
+### Changed
+- Bump Dependencies [#1555](https://github.com/FredrikNoren/ungit/pull/1555), [#1559](https://github.com/FredrikNoren/ungit/pull/1559), [#1560](https://github.com/FredrikNoren/ungit/pull/1560), [#1561](https://github.com/FredrikNoren/ungit/pull/1561), [#1563](https://github.com/FredrikNoren/ungit/pull/1563)
 
 ## [1.5.23](https://github.com/FredrikNoren/ungit/compare/v1.5.22...v1.5.23)
 
